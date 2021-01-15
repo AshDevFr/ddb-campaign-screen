@@ -1,0 +1,30 @@
+{
+  "name": "D&D Beyond Campaign DM Screen",
+  "version": "1.2.2",
+  "description": "DM Screen Extension for D&D Beyond. This extension extends the campaign page to turn it into a DM screen.",
+  "manifest_version": 2,
+  "icons": {
+    "16": "assets/icon-16x16.png",
+    "32": "assets/icon-32x32.png",
+    "128": "assets/icon-128x128.png"
+  },
+  "permissions": ["storage", "activeTab", "tabs"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "D&D Beyond Campaign DM Screen",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.dndbeyond.com/campaigns/*",
+        "http://www.dndbeyond.com/campaigns/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
+}
